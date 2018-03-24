@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Jaspreet on 29-01-2018.
  */
 
-    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
+    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
 
     private List<ListItem> listItems;
@@ -26,14 +26,14 @@ import java.util.List;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
       View v = LayoutInflater.from(parent.getContext())
               .inflate(R.layout.list_item, parent, false);
-                      return new  ViewHolder(v);
+                      return new  MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
             ListItem listItem =  listItems.get(position);
 
             holder.textViewHead.setText(listItem.getHead());
@@ -45,16 +45,16 @@ import java.util.List;
         return listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder{
 
         public TextView textViewHead;
         public TextView textViewDesc;
 
-        public ViewHolder(View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
 
-            textViewHead = (TextView) textViewHead.findViewById(R.id.textViewHead);
-            textViewDesc = (TextView) textViewDesc.findViewById(R.id.textViewDesc);
+            textViewHead = (TextView) itemView.findViewById(R.id.textViewHead);
+            textViewDesc = (TextView) itemView.findViewById(R.id.textViewDesc);
         }
     }
 
